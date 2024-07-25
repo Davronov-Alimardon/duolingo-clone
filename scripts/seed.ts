@@ -1,10 +1,12 @@
-import "dotenv/config";
+import { config } from "dotenv";
 import { drizzle } from "drizzle-orm/neon-http";
 import { neon } from "@neondatabase/serverless";
 
 import * as schema from "../db/schema";
 
-const sql = neon(process.env.DATABASE_URL!); 
+config({ path: ".env.local" });
+
+const sql = neon(process.env.DATABASE_URL!);
 // @ts-ignore
 const db = drizzle(sql, { schema });
 
@@ -51,7 +53,7 @@ const main = async () => {
         title: "Unit 1",
         description: "Learn the basics of Spanish",
         order: 1,
-      }
+      },
     ]);
 
     await db.insert(schema.lessons).values([
@@ -211,4 +213,3 @@ const main = async () => {
 };
 
 main();
-
