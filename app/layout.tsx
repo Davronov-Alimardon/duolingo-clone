@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { ExitModal } from "@/components/modals/exit-modal";
 import { HeartsModal } from "@/components/modals/hearts-modal";
 import { PracticeModal } from "@/components/modals/practice-modal";
+import { Analytics } from '@vercel/analytics/react';
 import "./globals.css";
 
 const font = Nunito({ subsets: ["latin"] });
@@ -28,6 +29,7 @@ export default function RootLayout({
           <HeartsModal />
           <PracticeModal />
           {children}
+          <Analytics />
         </body>
       </html>
     </ClerkProvider>
